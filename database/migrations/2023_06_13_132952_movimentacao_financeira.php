@@ -17,10 +17,11 @@ return new class extends Migration
             $table->bigInteger('motivo');
             $table->string('conta_debitar');
             $table->string('conta_creditar');
-            $table->char('obs', 255);
+            $table->char('obs', 255)->nullable();
             $table->double('valor');
-            $table->bigInteger('parent');
-            $table->bigInteger('child');
+            $table->bigInteger('parent')->nullable();
+            $table->bigInteger('child')->nullable();
+            $table->string('documento')->nullable();
         });
     }
 

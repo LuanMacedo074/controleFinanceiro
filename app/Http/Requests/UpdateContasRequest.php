@@ -37,4 +37,21 @@ class UpdateContasRequest extends FormRequest
             ];
         };
     }
+
+    public function validationData()
+    {
+        $this->convertTipoConta();
+
+        return $this->all();
+    }
+
+    /**
+     * Convert the "tipoConta" attribute to "tipo_conta".
+     */
+    private function convertTipoConta()
+    {
+        $tipoConta = $this->input('tipoConta');
+
+        $this->merge(['tipo_conta' => $tipoConta]);
+    }
 }
