@@ -43,7 +43,7 @@ class ContasController extends Controller
         $conta = Contas::where('codigo', '=', "$codigo")->firstOrFail(); 
         if($conta){
             $conta->update($request->all());
-            return response($conta, 200);}
+            return response(New ContaResource($conta), 200);}
         else    
             return [response(['msg' => 'not found'], 404)];
     }
