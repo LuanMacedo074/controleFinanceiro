@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContasController;
+use App\Http\Controllers\MovimentacaoFinanceiraController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,4 +31,11 @@ Route::group(['namespace' => 'App\Http\Controllers'], function (){
     route::delete('contas/{codigo}', [ContasController::class, 'delete']);
     route::put('contas/{codigo}', [ContasController::class, 'update']);
     route::patch('contas/{codigo}', [ContasController::class, 'update']);
+
+    //Endpoint pra movimentações financeiras
+    route::get('movto' , [MovimentacaoFinanceiraController::class, 'index']);
+    route::post('movto', [MovimentacaoFinanceiraController::class, 'store']);
+    route::delete('movto/{documento}', [MovimentacaoFinanceiraController::class, 'delete']);
+    route::put('movto/{documento}', [MovimentacaoFinanceiraController::class, 'update']);
+    route::patch('movto/{documento}', [MovimentacaoFinanceiraController::class, 'update']);
 });

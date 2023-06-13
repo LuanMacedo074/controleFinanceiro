@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Str;
 
 class StoreContasRequest extends FormRequest
 {
@@ -26,5 +27,27 @@ class StoreContasRequest extends FormRequest
             "codigo" => ['required'],
             "tipo_conta" => ['required'],
         ];
+    }
+
+    /**
+     * Get the validation data that should be used for the request.
+     *
+     * @return array
+     */
+    public function validationData()
+    {
+        $this->convertTipoConta();
+
+        return $this->all();
+    }
+
+    /**
+     * Convert the "tipoConta" attribute to "tipo_conta".
+     */
+    private function convertTipoConta()
+    {
+        $tipoConta = $this->input('tipoConta');
+
+        $this->merge(['tipo_conta' => $tipoConta]);
     }
 }

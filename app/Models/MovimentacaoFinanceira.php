@@ -5,17 +5,23 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Contas extends Model
+class MovimentacaoFinanceira extends Model
 {
-    protected $table = 'contas';
+    protected $table = 'movimentacao_financeira';
     protected $primaryKey = 'grid';
     public $timestamps = false;
     use HasFactory;
     
     protected $fillable = [
-        'nome',
-        'codigo',
-        'tipo_conta'
+        'data',
+        'motivo',
+        'conta_creditar',
+        'conta_debitar',
+        'obs',
+        'valor',
+        'parent',
+        'child',
+        'documento',
     ];
     
     protected $hidden = [
