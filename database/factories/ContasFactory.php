@@ -17,7 +17,9 @@ class ContasFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'nome' => fake()->name(),
+            'codigo' => fake()->randomDigit(),
+            'tipo_conta' => 'D'
         ];
     }
 }
