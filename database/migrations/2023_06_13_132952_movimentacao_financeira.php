@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('movimentacao_financeira', function (Blueprint $table){
             $table->id('grid');
-            $table->dateTime('data');
+            $table->dateTime('data')->useCurrent();
             $table->bigInteger('motivo');
             $table->string('conta_debitar');
             $table->string('conta_creditar');

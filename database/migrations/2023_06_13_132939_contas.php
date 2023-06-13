@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('conta', function (Blueprint $table){
+        Schema::create('contas', function (Blueprint $table){
             $table->id('grid');
             $table->string('nome');
-            $table->string('codigo');
-            $table->char('tipo_conta', 1);
+            $table->string('codigo')->unique();
+            $table->enum('tipo_conta', ['D', 'C']);
         });
     }
 

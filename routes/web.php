@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ContasController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +15,19 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return ['apiName' => 'api_luan', 'apiVersion' => '1.0'];
+});
+
+
+Route::group(['namespace' => 'App\Http\Controllers'], function (){
+    route::options('*', function (){
+        return [];
+    });
+    
+    //Endpoint contas
+    route::get('contas' , [ContasController::class, 'index']);
+    route::post('contas', [ContasController::class, 'store']);
+    route::delete('contas/{codigo}', [ContasController::class, 'delete']);
+    route::put('contas/{codigo}', [ContasController::class, 'update']);
+    route::patch('contas/{codigo}', [ContasController::class, 'update']);
 });
