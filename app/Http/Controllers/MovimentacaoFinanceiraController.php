@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\MovimentacaoFinanceira;
 use App\Http\Requests\StoreMovimentacaoFinanceiraRequest;
 use App\Http\Requests\UpdateMovimentacaoFinanceiraRequest;
-use App\Http\Resources\MovimentacaoFinanceiraollection;
+use App\Http\Resources\MovimentacaoFinanceiraCollection;
 use App\Http\Resources\MovimentacaoFinanceiraResource;
 
 class MovimentacaoFinanceiraController extends Controller
@@ -28,6 +28,27 @@ class MovimentacaoFinanceiraController extends Controller
 
     public function store(StoreMovimentacaoFinanceiraRequest $request)
     {
-        return new MovimentacaoFinanceiraResource(MovimentacaoFinanceira::create($request->all()));
+        $MovimentacaoFinanceira = MovimentacaoFinanceira::create($request->all());
+        return new MovimentacaoFinanceiraResource($MovimentacaoFinanceira);
+    }
+
+    public function delete($documento)
+    {
+        $MovimentacaoFinanceira = MovimentacaoFinanceira::where('documento', '=', "$documento")->firstOrFail(); 
+        if($MovimentacaoFinanceira){
+            $MovimentacaoFinanceira->delete(); 
+            return response([], 204); }
+        else    
+            return [response(['msg' => 'not found'], 404)];
+    }
+
+    public function update(UpdateMovimentacaoFinanceiraRequest $request,$documento)
+    {
+        $MovimentacaoFinanceira = MovimentacaoFinanceira::where('documento', '=', "$documento")->firstOrFail(); 
+        if($MovimentacaoFinanceira){
+            $MovimentacaoFinanceira->update($request->all());
+            return response(new MovimentacaoFinanceiraResource($MovimentacaoFinanceira, 200));}
+        else    
+            return [response(['msg' => 'not found'], 404)];
     }
 }
