@@ -35,11 +35,29 @@ class ContasControllerTest extends TestCase
         $data = [
             'nome' => 'Nova Conta',
             'codigo' => '1',
-            'tipo_conta' => 'D'
+            'tipoConta' => 'D'
         ];
 
         // Cenário de teste para o método store
         $response = $this->post('/contas', $data);
+
+        // Asserts para verificar o resultado do método
+        $response->assertStatus(201);
+        // Verifique se a resposta contém os dados da nova conta criada
+        $response->assertJsonStructure(['data' => ['nome', 'codigo', 'tipoConta']]);
+    }
+
+    public function testStorePut()
+    {
+        // Dados de teste para criar uma nova conta
+        $data = [
+            'nome' => 'Nova Conta',
+            'codigo' => '1',
+            'tipoConta' => 'D'
+        ];
+
+        // Cenário de teste para o método store
+        $response = $this->put('/contas', $data);
 
         // Asserts para verificar o resultado do método
         $response->assertStatus(201);
@@ -68,7 +86,10 @@ class ContasControllerTest extends TestCase
         $data = [
             'nome' => 'Conta Atualizada',
             'codigo' => '1',
-            'tipo_conta' => 'D'
+            'tipoConta' => 'D',
+            'obs' => $conta->obs,
+            'documento' => $conta->documento,
+            'data' => '2023-06-14'
         ];
 
         // Cenário de teste para o método update
@@ -78,5 +99,24 @@ class ContasControllerTest extends TestCase
         $response->assertStatus(200);
         // Verifique se a resposta contém os dados atualizados da conta
         $response->assertJson(['nome' => 'Conta Atualizada', 'codigo' => '1', 'tipoConta' => 'D']);
+    }
+
+    public function testUpdatePatch()
+    {
+        // Crie uma conta para ser atualizada
+        $conta = Contas::factory()->create();
+
+        // Dados de teste para atualizar a conta
+        $data = [
+            'nome' => 'Conta Atualizada',
+        ];
+
+        // Cenário de teste para o método update
+        $response = $this->patch('/contas/'.$conta->codigo, $data);
+
+        // Asserts para verificar o resultado do método
+        $response->assertStatus(200);
+        // Verifique se a resposta contém os dados atualizados da conta
+        $response->assertJson(['nome' => 'Conta Atualizada', 'codigo' => "$conta->codigo", 'tipoConta' => 'D']);
     }
 }

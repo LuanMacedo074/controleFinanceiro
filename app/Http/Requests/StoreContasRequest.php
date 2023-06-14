@@ -26,7 +26,7 @@ class StoreContasRequest extends FormRequest
             "nome" => ['required'],
             "codigo" => ['required'],
             "tipo_conta" => ['required'],
-        ];
+        ];  
     }
 
     /**

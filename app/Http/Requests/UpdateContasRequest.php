@@ -49,9 +49,10 @@ class UpdateContasRequest extends FormRequest
      * Convert the "tipoConta" attribute to "tipo_conta".
      */
     private function convertTipoConta()
-    {
+    {  
+        if ($this->input('tipoConta')){
         $tipoConta = $this->input('tipoConta');
 
-        $this->merge(['tipo_conta' => $tipoConta]);
+        $this->merge(['tipo_conta' => $tipoConta]);}
     }
 }

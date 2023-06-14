@@ -22,7 +22,25 @@ class StoreMovimentacaoFinanceiraRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'motivo' => ['required'],
+            'conta_debitar' => ['required'],
+            'conta_creditar' => ['required'],
+            'valor' => ['required'],
         ];
     }
+
+    public function ValidationData()
+    {
+        $this->formatData();
+        return $this->all();
+    }
+
+    private function formatData()
+    {
+        $conta_debitar = $this->input('contaDebitar');
+        $conta_creditar = $this->input('contaCreditar');
+
+        $this->merge(['conta_creditar' => $conta_creditar, 'conta_debitar' => $conta_debitar]);
+    }
 }
+

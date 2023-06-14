@@ -12,8 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('movimentacao_financeira', function (Blueprint $table){
+            $table->string('documento')->unique();
             $table->id('grid');
-            $table->dateTime('data')->useCurrent();
+            $table->date('data')->default(DB::raw('now()'));
             $table->bigInteger('motivo');
             $table->string('conta_debitar');
             $table->string('conta_creditar');
@@ -21,8 +22,11 @@ return new class extends Migration
             $table->double('valor');
             $table->bigInteger('parent')->nullable();
             $table->bigInteger('child')->nullable();
-            $table->string('documento')->nullable();
         });
+        
+        // Define o valor padrão e cria o evento para atualizar o campo 'documento'
+        DB::statement('CREATE SEQUENCE movimentacao_financeira_documento_seq OWNED BY movimentacao_financeira.documento');
+        DB::statement('ALTER TABLE movimentacao_financeira ALTER COLUMN documento SET DEFAULT nextval(\'movimentacao_financeira_documento_seq\'::regclass)');
     }
 
     /**

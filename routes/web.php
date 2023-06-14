@@ -28,6 +28,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function (){
     //Endpoint contas
     route::get('contas' , [ContasController::class, 'index']);
     route::post('contas', [ContasController::class, 'store']);
+    route::put('contas', [ContasController::class, 'store']);
     route::delete('contas/{codigo}', [ContasController::class, 'delete']);
     route::put('contas/{codigo}', [ContasController::class, 'update']);
     route::patch('contas/{codigo}', [ContasController::class, 'update']);
@@ -35,6 +36,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function (){
     //Endpoint pra movimentações financeiras
     route::get('movto' , [MovimentacaoFinanceiraController::class, 'index']);
     route::post('movto', [MovimentacaoFinanceiraController::class, 'store']);
+    route::put('movto', [MovimentacaoFinanceiraController::class, 'store']);
     route::delete('movto/{documento}', [MovimentacaoFinanceiraController::class, 'delete']);
     route::put('movto/{documento}', [MovimentacaoFinanceiraController::class, 'update']);
     route::patch('movto/{documento}', [MovimentacaoFinanceiraController::class, 'update']);

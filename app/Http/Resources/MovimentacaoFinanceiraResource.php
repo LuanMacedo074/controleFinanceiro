@@ -15,16 +15,13 @@ class MovimentacaoFinanceiraResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'grid' => $this->grid,
+            'documento' => $this->documento,
             'data' => $this->data,
             'motivo' => $this->motivo,
             'contaDebitar' => $this->conta_debitar,
             'contaCreditar' => $this->conta_creditar,
             'obs' => $this->obs,
             'valor' => $this->valor,
-            'parent' => $this->parent,
-            'child' => $this->child,
-            'documento' => $this->documento,
         ];
     }
 }
