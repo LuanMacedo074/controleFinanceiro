@@ -5,7 +5,7 @@ namespace App\Http\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class ContaResource extends JsonResource
+class MotivoMovtoResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,9 +16,7 @@ class ContaResource extends JsonResource
     {
         return [
             'nome' => $this->nome,
-            'codigo' => $this->codigo,
-            'tipoConta' => $this->tipo_conta,
-            'saldoInicial' => $this->saldo_inicial
+            'codigo' => $this->codigo
         ];
     }
 }

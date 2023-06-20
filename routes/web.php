@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContasController;
 use App\Http\Controllers\MovimentacaoFinanceiraController;
+use App\Http\Controllers\MotivoMovtoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,4 +41,12 @@ Route::group(['namespace' => 'App\Http\Controllers'], function (){
     route::delete('movto/{documento}', [MovimentacaoFinanceiraController::class, 'delete']);
     route::put('movto/{documento}', [MovimentacaoFinanceiraController::class, 'update']);
     route::patch('movto/{documento}', [MovimentacaoFinanceiraController::class, 'update']);
+
+    //Endpoint para os motivos de movimentações
+    route::get('motivo_movto' , [MotivoMovtoController::class, 'index']);
+    route::post('motivo_movto', [MotivoMovtoController::class, 'store']);
+    route::put('motivo_movto', [MotivoMovtoController::class, 'store']);
+    route::delete('motivo_movto/{codigo}', [MotivoMovtoController::class, 'delete']);
+    route::put('motivo_movto/{codigo}', [MotivoMovtoController::class, 'update']);
+    route::patch('motivo_movto/{codigo}', [MotivoMovtoController::class, 'update']);
 });

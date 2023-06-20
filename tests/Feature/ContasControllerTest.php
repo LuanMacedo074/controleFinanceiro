@@ -18,7 +18,7 @@ class ContasControllerTest extends TestCase
         // Asserts para verificar o resultado do método
         $response->assertStatus(200);
         // Verifique se a resposta contém uma coleção de contas ou uma mensagem de erro
-        $response->assertJsonStructure(['data' => ['*' => ['nome', 'codigo', 'tipoConta']]]);
+        $response->assertJsonStructure(['data' => ['*' => ['nome', 'codigo', 'tipoConta', 'saldoInicial']]]);
 
         // Cenário de teste para o método index com paginação
         $response = $this->get('/contas?paginate=10');
@@ -26,7 +26,7 @@ class ContasControllerTest extends TestCase
         // Asserts para verificar o resultado do método com paginação
         $response->assertStatus(200);
         // Verifique se a resposta contém uma coleção paginada de contas ou uma mensagem de erro
-        $response->assertJsonStructure(['data' => ['*' => ['nome', 'codigo', 'tipoConta']], 'links', 'meta']);
+        $response->assertJsonStructure(['data' => ['*' => ['nome', 'codigo', 'tipoConta', 'saldoInicial']], 'links', 'meta']);
     }
 
     public function testStore()
@@ -35,7 +35,8 @@ class ContasControllerTest extends TestCase
         $data = [
             'nome' => 'Nova Conta',
             'codigo' => '1',
-            'tipoConta' => 'D'
+            'tipoConta' => 'D',
+            'saldoInicial' => 250
         ];
 
         // Cenário de teste para o método store
@@ -44,7 +45,7 @@ class ContasControllerTest extends TestCase
         // Asserts para verificar o resultado do método
         $response->assertStatus(201);
         // Verifique se a resposta contém os dados da nova conta criada
-        $response->assertJsonStructure(['data' => ['nome', 'codigo', 'tipoConta']]);
+        $response->assertJson(['data' => ['nome' => 'Nova Conta', 'codigo' => '1', 'tipoConta' => 'D', 'saldoInicial' => 250]]);
     }
 
     public function testStorePut()
@@ -53,7 +54,8 @@ class ContasControllerTest extends TestCase
         $data = [
             'nome' => 'Nova Conta',
             'codigo' => '1',
-            'tipoConta' => 'D'
+            'tipoConta' => 'D',
+            'saldoInicial' => 250
         ];
 
         // Cenário de teste para o método store
@@ -62,7 +64,7 @@ class ContasControllerTest extends TestCase
         // Asserts para verificar o resultado do método
         $response->assertStatus(201);
         // Verifique se a resposta contém os dados da nova conta criada
-        $response->assertJsonStructure(['data' => ['nome', 'codigo', 'tipoConta']]);
+        $response->assertJson(['data' => ['nome' => 'Nova Conta', 'codigo' => '1', 'tipoConta' => 'D', 'saldoInicial' => 250]]);
     }
 
     public function testDelete()
@@ -87,9 +89,7 @@ class ContasControllerTest extends TestCase
             'nome' => 'Conta Atualizada',
             'codigo' => '1',
             'tipoConta' => 'D',
-            'obs' => $conta->obs,
-            'documento' => $conta->documento,
-            'data' => '2023-06-14'
+            'saldoInicial' => 250
         ];
 
         // Cenário de teste para o método update
@@ -98,7 +98,7 @@ class ContasControllerTest extends TestCase
         // Asserts para verificar o resultado do método
         $response->assertStatus(200);
         // Verifique se a resposta contém os dados atualizados da conta
-        $response->assertJson(['nome' => 'Conta Atualizada', 'codigo' => '1', 'tipoConta' => 'D']);
+        $response->assertJson(['nome' => 'Conta Atualizada', 'codigo' => '1', 'tipoConta' => 'D', 'saldoInicial' => 250]);
     }
 
     public function testUpdatePatch()
@@ -117,6 +117,6 @@ class ContasControllerTest extends TestCase
         // Asserts para verificar o resultado do método
         $response->assertStatus(200);
         // Verifique se a resposta contém os dados atualizados da conta
-        $response->assertJson(['nome' => 'Conta Atualizada', 'codigo' => "$conta->codigo", 'tipoConta' => 'D']);
+        $response->assertJson(['nome' => 'Conta Atualizada', 'codigo' => "$conta->codigo", 'tipoConta' => "$conta->tipo_conta"]);
     }
 }

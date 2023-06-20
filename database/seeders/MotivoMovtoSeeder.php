@@ -4,15 +4,16 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\Contas;
+use App\Models\MotivoMovto;
 
-class ContasSeeder extends Seeder
+
+class MotivoMovtoSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        Contas::factory()->count(5)->create();
+        MotivoMovto::factory()->count(5)->create();
     }
 }
