@@ -15,7 +15,8 @@ class Contas extends Model
     protected $fillable = [
         'nome',
         'codigo',
-        'tipo_conta'
+        'tipo_conta',
+        'saldo_inicial'
     ];
     
     protected $hidden = [

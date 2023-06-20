@@ -11,12 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('contas', function (Blueprint $table){
-            $table->id('grid');
-            $table->string('nome');
-            $table->string('codigo')->unique();
-            $table->enum('tipo_conta', ['D', 'C']);
-            $table->double('saldo_inicial');
+        Schema::create('motivo_movtos', function (Blueprint $table) {
+            $table->id();
+            $table->timestamps();
         });
     }
 
@@ -25,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::drop('contas');
+        Schema::dropIfExists('motivo_movtos');
     }
 };

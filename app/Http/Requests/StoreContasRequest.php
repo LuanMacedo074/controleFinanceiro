@@ -26,6 +26,7 @@ class StoreContasRequest extends FormRequest
             "nome" => ['required'],
             "codigo" => ['required'],
             "tipo_conta" => ['required'],
+            "saldo_inicial" => ['required']
         ];  
     }
 
@@ -37,6 +38,7 @@ class StoreContasRequest extends FormRequest
     public function validationData()
     {
         $this->convertTipoConta();
+        $this->convertSaldoInicial();
 
         return $this->all();
     }
@@ -49,5 +51,11 @@ class StoreContasRequest extends FormRequest
         $tipoConta = $this->input('tipoConta');
 
         $this->merge(['tipo_conta' => $tipoConta]);
+    }
+
+    private function convertSaldoInicial()
+    {
+        $saldo_inicial = $this->input('saldoInicial');
+        $this->merge(['saldo_inicial' => $saldo_inicial]);
     }
 }

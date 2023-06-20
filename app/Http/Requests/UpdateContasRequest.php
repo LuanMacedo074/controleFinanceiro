@@ -27,6 +27,7 @@ class UpdateContasRequest extends FormRequest
             "nome" => ['required'],
             "codigo" => ['required'],
             "tipo_conta" => ['required'],
+            "saldo_inicial" => ['required']
         ];
         } else
         {
@@ -34,6 +35,7 @@ class UpdateContasRequest extends FormRequest
             "nome" => ['sometimes', 'required'],
             "codigo" => ['sometimes', 'required'],
             "tipo_conta" => ['sometimes', 'required'],
+            "saldo_inicial" => ['required', 'sometimes']
             ];
         };
     }
@@ -41,6 +43,7 @@ class UpdateContasRequest extends FormRequest
     public function validationData()
     {
         $this->convertTipoConta();
+        $this->convertSaldoInicial();
 
         return $this->all();
     }
@@ -54,5 +57,14 @@ class UpdateContasRequest extends FormRequest
         $tipoConta = $this->input('tipoConta');
 
         $this->merge(['tipo_conta' => $tipoConta]);}
+    }
+
+    private function convertSaldoInicial()
+    {
+        if ($this->input('saldoInicial'))
+        {
+        $saldo_inicial = $this->input('saldoInicial');
+        $this->merge(['saldo_inicial' => $saldo_inicial]);
+        }    
     }
 }
