@@ -51,4 +51,10 @@ class MovimentacaoFinanceiraController extends Controller
         else    
             return [response(['msg' => 'not found'], 404)];
     }
+
+    public function getNext()
+    {
+        $result = DB::select('select last_value + 1 as value from movimentacao_financeira_documento_seq;')[0];
+        return response(json_encode($result), 200);
+    }
 }

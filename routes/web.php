@@ -34,6 +34,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function (){
     route::put('contas/{codigo}', [ContasController::class, 'update']);
     route::patch('contas/{codigo}', [ContasController::class, 'update']);
 
+
     //Endpoint pra movimentações financeiras
     route::get('movto' , [MovimentacaoFinanceiraController::class, 'index']);
     route::post('movto', [MovimentacaoFinanceiraController::class, 'store']);
@@ -41,6 +42,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function (){
     route::delete('movto/{documento}', [MovimentacaoFinanceiraController::class, 'delete']);
     route::put('movto/{documento}', [MovimentacaoFinanceiraController::class, 'update']);
     route::patch('movto/{documento}', [MovimentacaoFinanceiraController::class, 'update']);
+    route::get('movto/getnext', [MovimentacaoFinanceiraController::class, 'getNext']);
 
     //Endpoint para os motivos de movimentações
     route::get('motivo_movto' , [MotivoMovtoController::class, 'index']);
@@ -49,4 +51,5 @@ Route::group(['namespace' => 'App\Http\Controllers'], function (){
     route::delete('motivo_movto/{codigo}', [MotivoMovtoController::class, 'delete']);
     route::put('motivo_movto/{codigo}', [MotivoMovtoController::class, 'update']);
     route::patch('motivo_movto/{codigo}', [MotivoMovtoController::class, 'update']);
+    route::get('motivo_movto/getnext', [MotivoMovtoController::class, 'getNext']);
 });

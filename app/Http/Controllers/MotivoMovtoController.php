@@ -8,6 +8,7 @@ use App\Http\Requests\UpdateMotivoMovtoRequest;
 use App\Http\Resources\MotivoMovtoCollection;
 use App\Http\Resources\MotivoMovtoResource;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class MotivoMovtoController extends Controller
 {
@@ -47,5 +48,11 @@ class MotivoMovtoController extends Controller
         } else {
             return response(['msg' => 'not found', 404]);
         }
+    }
+
+    public function getNext()
+    {
+        $result = DB::select('select last_value + 1 as value from motivo_movto_grid_seq;')[0];
+        return response(json_encode($result), 200);
     }
 }
