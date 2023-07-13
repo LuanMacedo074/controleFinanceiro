@@ -23,7 +23,6 @@ class Cors
         ];
         
         if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
-            error_log("work");
             return response([], 200, $headers);
         }
 

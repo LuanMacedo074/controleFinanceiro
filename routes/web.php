@@ -30,9 +30,11 @@ Route::group(['namespace' => 'App\Http\Controllers'], function (){
     route::get('contas' , [ContasController::class, 'index']);
     route::post('contas', [ContasController::class, 'store']);
     route::put('contas', [ContasController::class, 'store']);
+    route::get('contas/placeholders', [ContasController::class, 'contasPlaceholder']);
     route::delete('contas/{codigo}', [ContasController::class, 'delete']);
     route::put('contas/{codigo}', [ContasController::class, 'update']);
     route::patch('contas/{codigo}', [ContasController::class, 'update']);
+
 
 
     //Endpoint pra movimentações financeiras

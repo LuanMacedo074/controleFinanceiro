@@ -7,6 +7,7 @@ use App\Http\Requests\StoreMovimentacaoFinanceiraRequest;
 use App\Http\Requests\UpdateMovimentacaoFinanceiraRequest;
 use App\Http\Resources\MovimentacaoFinanceiraCollection;
 use App\Http\Resources\MovimentacaoFinanceiraResource;
+use Illuminate\Support\Facades\DB;
 
 class MovimentacaoFinanceiraController extends Controller
 {

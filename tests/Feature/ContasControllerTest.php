@@ -119,4 +119,23 @@ class ContasControllerTest extends TestCase
         // Verifique se a resposta contém os dados atualizados da conta
         $response->assertJson(['nome' => 'Conta Atualizada', 'codigo' => "$conta->codigo", 'tipoConta' => "$conta->tipo_conta"]);
     }
+
+    public function testPlaceholder()
+    {
+        // Dados de teste para criar uma nova conta
+        $data = [
+            'nome' => 'Nova Conta',
+            'codigo' => '1',
+            'tipoConta' => 'D',
+            'saldoInicial' => 250
+        ];
+
+        // Cenário de teste para o método store
+        $response = $this->get('/contas/placeholder');
+
+        // Asserts para verificar o resultado do método
+        $response->assertStatus(202);
+        // Verifique se a resposta contém os dados da nova conta criada
+        $response->assertJson(['nome' => 'Nova Conta', 'codigo' => '1']);
+    }
 }

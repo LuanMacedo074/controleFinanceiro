@@ -47,4 +47,9 @@ class ContasController extends Controller
         else    
             return [response(['msg' => 'not found'], 404)];
     }
+
+    public function contasPlaceholder()
+    {
+        return response(Contas::select('codigo', 'nome')->get(), 200);
+    }
 }
