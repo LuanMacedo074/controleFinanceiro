@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Requests;
-
+use App\Models\MovimentacaoFinanceira;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateMovimentacaoFinanceiraRequest extends FormRequest
@@ -49,6 +49,7 @@ class UpdateMovimentacaoFinanceiraRequest extends FormRequest
     public function ValidationData()
     {  
         $this->formatData();
+        $this->convertValor();
 
         return $this->all();
     }
@@ -61,6 +62,17 @@ class UpdateMovimentacaoFinanceiraRequest extends FormRequest
         if ($this->input('contaCreditar')){
         $conta_creditar = $this->input('contaCreditar');
         $this->merge(['conta_creditar' => $conta_creditar]);}
+    }
+
+    private function convertValor()
+    {
+            $valor = $this->input('valor') ? $this->input('valor') : $this->getValue()->valor;  
+            $this->merge(['valor' => $valor*100]);
+    }
+
+    private function getValue()
+    {
+        return MovimentacaoFinanceira::where('documento',$this->route('documento'))->firstorfail();
     }
 }
 

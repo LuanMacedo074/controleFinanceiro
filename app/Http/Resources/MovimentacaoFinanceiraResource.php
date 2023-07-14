@@ -21,7 +21,7 @@ class MovimentacaoFinanceiraResource extends JsonResource
             'contaDebitar' => $this->conta_debitar,
             'contaCreditar' => $this->conta_creditar,
             'obs' => $this->obs,
-            'valor' => $this->valor,
+            'valor' => $this->valor/100,
         ];
     }
 }

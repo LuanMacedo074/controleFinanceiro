@@ -22,7 +22,7 @@ class MovimentacaoFinanceiraFactory extends Factory
             'motivo' => 1,
             'conta_debitar' => '1.1',
             'conta_creditar' => '1.1.2',
-            'valor' => fake()->randomFloat(2, 0, 500),
+            'valor' => fake()->randomFloat(2, 0, 500)*100,
             'data' => fake()->date('Y-m-d'),
             'documento' => DB::select("select nextval('movimentacao_financeira_documento_seq'::regclass) as nv;")[0]->nv
         ];

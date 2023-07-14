@@ -120,7 +120,7 @@ class ContasControllerTest extends TestCase
         $response->assertJson(['nome' => 'Conta Atualizada', 'codigo' => "$conta->codigo", 'tipoConta' => "$conta->tipo_conta"]);
     }
 
-    public function testPlaceholder()
+    public function testPlaceholders()
     {
         // Dados de teste para criar uma nova conta
         $data = [
@@ -130,12 +130,16 @@ class ContasControllerTest extends TestCase
             'saldoInicial' => 250
         ];
 
+        
         // Cenário de teste para o método store
-        $response = $this->get('/contas/placeholder');
+        $this->post('/contas', $data);
+
+        // Cenário de teste para o método store
+        $response = $this->get('/contas/placeholders');
 
         // Asserts para verificar o resultado do método
-        $response->assertStatus(202);
+        $response->assertStatus(200);
         // Verifique se a resposta contém os dados da nova conta criada
-        $response->assertJson(['nome' => 'Nova Conta', 'codigo' => '1']);
+        $response->assertJsonStructure(['*' => ['nome', 'codigo']]);
     }
 }

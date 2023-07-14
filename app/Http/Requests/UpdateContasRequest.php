@@ -64,7 +64,7 @@ class UpdateContasRequest extends FormRequest
         if ($this->input('saldoInicial'))
         {
         $saldo_inicial = $this->input('saldoInicial');
-        $this->merge(['saldo_inicial' => $saldo_inicial]);
+        $this->merge(['saldo_inicial' => $saldo_inicial*100]);
         }    
     }
 }
