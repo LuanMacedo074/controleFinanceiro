@@ -56,6 +56,6 @@ class StoreContasRequest extends FormRequest
     private function convertSaldoInicial()
     {
         $saldo_inicial = $this->input('saldoInicial');
-        $this->merge(['saldo_inicial' => $saldo_inicial]);
+        $this->merge(['saldo_inicial' => $saldo_inicial*100]);
     }
 }

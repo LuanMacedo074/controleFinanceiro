@@ -18,7 +18,7 @@ class ContaResource extends JsonResource
             'nome' => $this->nome,
             'codigo' => $this->codigo,
             'tipoConta' => $this->tipo_conta,
-            'saldoInicial' => $this->saldo_inicial
+            'saldoInicial' => $this->saldo_inicial/100
         ];
     }
 }

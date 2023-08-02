@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('conta_debitar');
             $table->string('conta_creditar');
             $table->char('obs', 255)->nullable();
-            $table->double('valor');
+            $table->integer('valor');
             $table->bigInteger('parent')->nullable();
             $table->bigInteger('child')->nullable();
         });

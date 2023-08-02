@@ -32,6 +32,7 @@ class StoreMovimentacaoFinanceiraRequest extends FormRequest
     public function ValidationData()
     {
         $this->formatData();
+        $this->convertValor();
         return $this->all();
     }
 
@@ -41,6 +42,11 @@ class StoreMovimentacaoFinanceiraRequest extends FormRequest
         $conta_creditar = $this->input('contaCreditar');
 
         $this->merge(['conta_creditar' => $conta_creditar, 'conta_debitar' => $conta_debitar]);
+    }
+
+    private function convertValor()
+    {
+        $this->merge(['valor' => $this->input('valor')*100]);
     }
 }
 

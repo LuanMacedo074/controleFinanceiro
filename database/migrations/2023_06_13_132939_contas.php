@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('nome');
             $table->string('codigo')->unique();
             $table->enum('tipo_conta', ['D', 'C']);
-            $table->double('saldo_inicial');
+            $table->integer('saldo_inicial');
         });
     }
 

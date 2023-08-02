@@ -138,7 +138,7 @@ class MovimentacaoFinanceiraControllerTest extends TestCase
                 "contaDebitar"=> "1.1.5",
                 "contaCreditar"=> "1.1.2",
                 "obs"=> null,
-                "valor"=> "$movto->valor"
+                "valor"=> $movto->valor
             ]
         );
     }

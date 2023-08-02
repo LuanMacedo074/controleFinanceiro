@@ -1,0 +1,35 @@
+version: '3'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8001:9000" # Mapeia a porta 8000 do host para a porta 9000 do container PHP-FPM
+    volumes:
+      - .:/var/www # Monta o diretório atual como volume para o diretório de trabalho do container
+    depends_on:
+      - db # Dependência no serviço do banco de dados
+
+  db:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: controle_financeiro
+    ports:
+      - "5432:5432" # Mapeia a porta 5432 do host para a porta 5432 do container PostgreSQL
+    volumes:
+      - pgdata:/var/lib/postgresql/data # Volume para persistir os dados do PostgreSQL
+
+  web:
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    ports:
+      - "8000:80" # Mapeia a porta 8000 do host para a porta 80 do container Nginx
+    depends_on:
+      - app # Dependência no serviço PHP-FPM (app)
+
+volumes:
+  pgdata: # Volume para persistir os dados do PostgreSQL

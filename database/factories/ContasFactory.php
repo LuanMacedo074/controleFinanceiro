@@ -22,7 +22,7 @@ class ContasFactory extends Factory
             'nome' => fake()->name(),
             'codigo' => fake()->unique()->randomDigit(),
             'tipo_conta' => $arrayValues[rand(0,1)],
-            'saldo_inicial' => fake()->randomFloat(2, 0, 2500),
+            'saldo_inicial' => fake()->randomFloat(2, 0, 2500)*100,
         ];
     }
 }
