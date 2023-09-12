@@ -15,7 +15,7 @@ class JsonMiddleware
      * @return mixed
      */
     public function handle( $request, Closure $next)
-    {   
+    {
         if (!$request->isMethod("OPTIONS")){
             $header = $request->header('Accept');
             if ($header != 'application/json') {
