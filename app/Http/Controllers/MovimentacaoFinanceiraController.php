@@ -33,9 +33,9 @@ class MovimentacaoFinanceiraController extends Controller
         return new MovimentacaoFinanceiraResource($MovimentacaoFinanceira);
     }
 
-    public function delete($documento)
+    public function delete($grid)
     {
-        $MovimentacaoFinanceira = MovimentacaoFinanceira::where('documento', '=', "$documento")->firstOrFail();
+        $MovimentacaoFinanceira = MovimentacaoFinanceira::where('grid', '=', "$grid")->firstOrFail();
         if($MovimentacaoFinanceira){
             $MovimentacaoFinanceira->delete();
             return response([], 204); }
@@ -43,9 +43,9 @@ class MovimentacaoFinanceiraController extends Controller
             return [response(['msg' => 'not found'], 404)];
     }
 
-    public function update(UpdateMovimentacaoFinanceiraRequest $request,$documento)
+    public function update(UpdateMovimentacaoFinanceiraRequest $request,$grid)
     {
-        $MovimentacaoFinanceira = MovimentacaoFinanceira::where('documento', '=', "$documento")->firstOrFail();
+        $MovimentacaoFinanceira = MovimentacaoFinanceira::where('grid', '=', "$grid")->firstOrFail();
         if($MovimentacaoFinanceira){
             $MovimentacaoFinanceira->update($request->all());
             return response(new MovimentacaoFinanceiraResource($MovimentacaoFinanceira, 200));}

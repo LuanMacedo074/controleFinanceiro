@@ -40,14 +40,14 @@ class UpdateMovimentacaoFinanceiraRequest extends FormRequest
                 'conta_creditar' => ['sometimes', 'required'],
                 'valor' => ['sometimes', 'required'],
                 'data' => ['sometimes', 'required', 'date'],
-                'obs' => ['sometimes', 'required', 'size:255'],
+                'obs' => ['sometimes', 'required', 'max:255'],
                 'documento' => ['sometimes', 'required'],
             ];
         };
     }
 
     public function ValidationData()
-    {  
+    {
         $this->formatData();
         $this->convertValor();
 
@@ -66,7 +66,7 @@ class UpdateMovimentacaoFinanceiraRequest extends FormRequest
 
     private function convertValor()
     {
-            $valor = $this->input('valor') ? $this->input('valor') : $this->getValue()->valor;  
+            $valor = $this->input('valor') ? $this->input('valor') : $this->getValue()->valor;
             $this->merge(['valor' => $valor*100]);
     }
 

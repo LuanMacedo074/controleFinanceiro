@@ -25,7 +25,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function (){
     route::options('*', function (){
         return [];
     });
-    
+
     //Endpoint contas
     route::get('contas' , [ContasController::class, 'index']);
     route::post('contas', [ContasController::class, 'store']);

@@ -21,6 +21,7 @@ class MovimentacaoFinanceiraResource extends JsonResource
             $contaCreditar = DB::select("SELECT nome FROM contas WHERE codigo='$this->conta_creditar'");
 
             return [
+                'grid' => $this->grid,
                 'documento' => $this->documento,
                 'data' => $this->data,
                 'motivo' => $motivo[0]->nome,
@@ -32,6 +33,7 @@ class MovimentacaoFinanceiraResource extends JsonResource
         }
 
         return [
+            'grid' => $this->grid,
             'documento' => $this->documento,
             'data' => $this->data,
             'motivo' => $this->motivo,
