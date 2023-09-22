@@ -41,9 +41,9 @@ Route::group(['namespace' => 'App\Http\Controllers'], function (){
     route::get('movto' , [MovimentacaoFinanceiraController::class, 'index']);
     route::post('movto', [MovimentacaoFinanceiraController::class, 'store']);
     route::put('movto', [MovimentacaoFinanceiraController::class, 'store']);
-    route::delete('movto/{documento}', [MovimentacaoFinanceiraController::class, 'delete']);
-    route::put('movto/{documento}', [MovimentacaoFinanceiraController::class, 'update']);
-    route::patch('movto/{documento}', [MovimentacaoFinanceiraController::class, 'update']);
+    route::delete('movto/{grid}', [MovimentacaoFinanceiraController::class, 'delete']);
+    route::put('movto/{grid}', [MovimentacaoFinanceiraController::class, 'update']);
+    route::patch('movto/{grid}', [MovimentacaoFinanceiraController::class, 'update']);
     route::get('movto/getnext', [MovimentacaoFinanceiraController::class, 'getNext']);
 
     //Endpoint para os motivos de movimentações
