@@ -1,66 +1,123 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<h1>
+API Laravel - Gerenciamento de Movimentações Financeiras
+Esta API foi desenvolvida para uso pessoal, oferecendo operações CRUD (Create, Read, Update, Delete) para contas, movimentações financeiras e motivos de movimentações. Abaixo estão as principais informações para começar a usar a API.
+</h1>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Informações Gerais
+Nome da API: api_luan
+Versão da API: 1.0
+Rotas Disponíveis
+Informações Gerais
+Método: GET
+Endpoint: /
+Descrição: Retorna informações básicas sobre a API, como nome e versão.
+Contas
+Método: GET
 
-## About Laravel
+Endpoint: /contas
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Descrição: Retorna a lista de contas.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Método: POST
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Endpoint: /contas
 
-## Learning Laravel
+Descrição: Cria uma nova conta.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Método: PUT
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+Endpoint: /contas
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Descrição: Atualiza uma conta existente.
 
-## Laravel Sponsors
+Método: GET
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+Endpoint: /contas/placeholders
 
-### Premium Partners
+Descrição: Retorna placeholders para contas.
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+Método: DELETE
 
-## Contributing
+Endpoint: /contas/{codigo}
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Descrição: Exclui uma conta com o código especificado.
 
-## Code of Conduct
+Método: PUT/PATCH
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Endpoint: /contas/{codigo}
 
-## Security Vulnerabilities
+Descrição: Atualiza uma conta existente com o código especificado.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Movimentações Financeiras
+Método: GET
 
-## License
+Endpoint: /movto
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Descrição: Retorna a lista de movimentações financeiras.
+
+Método: POST
+
+Endpoint: /movto
+
+Descrição: Cria uma nova movimentação financeira.
+
+Método: PUT
+
+Endpoint: /movto
+
+Descrição: Atualiza uma movimentação financeira existente.
+
+Método: DELETE
+
+Endpoint: /movto/{grid}
+
+Descrição: Exclui uma movimentação financeira com o grid especificado.
+
+Método: PUT/PATCH
+
+Endpoint: /movto/{grid}
+
+Descrição: Atualiza uma movimentação financeira existente com o grid especificado.
+
+Método: GET
+
+Endpoint: /movto/getnext
+
+Descrição: Obtém a próxima movimentação financeira.
+
+Motivos de Movimentações
+Método: GET
+
+Endpoint: /motivo_movto
+
+Descrição: Retorna a lista de motivos de movimentações.
+
+Método: POST
+
+Endpoint: /motivo_movto
+
+Descrição: Cria um novo motivo de movimentação.
+
+Método: PUT
+
+Endpoint: /motivo_movto
+
+Descrição: Atualiza um motivo de movimentação existente.
+
+Método: DELETE
+
+Endpoint: /motivo_movto/{codigo}
+
+Descrição: Exclui um motivo de movimentação com o código especificado.
+
+Método: PUT/PATCH
+
+Endpoint: /motivo_movto/{codigo}
+
+Descrição: Atualiza um motivo de movimentação existente com o código especificado.
+
+Método: GET
+
+Endpoint: /motivo_movto/getnext
+
+Descrição: Obtém o próximo motivo de movimentação.
